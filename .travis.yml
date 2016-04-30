@@ -1,0 +1,13 @@
+language: c
+sudo: false
+
+env: FPCDIR=${HOME}/fpc
+
+# install fpc
+install: .travis/fpcup.sh || cat ${HOME}/fpcup.log
+
+# build via the Makefile
+script: make FPC=${FPCDIR}/bin/x86_64-linux/fpc.sh
+
+# run the result
+after_success: ./hello
